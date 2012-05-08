@@ -1,8 +1,46 @@
 ﻿<Window x:Class="myAccount.NET.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="myAccount - osobní hotovostní účetnictví" Height="400" Width="600" Icon="images/icon29.png">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Margin="7">Přidat:</TextBlock>
+            <Button Grid.Column="1">Platba</Button>
+            <Button Grid.Column="2">Výběr</Button>
+            <Button Grid.Column="3">Dluh</Button>
+            <Button Grid.Column="4">Půjčení</Button>
+            <Button Grid.Column="5">Příjem</Button>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0">Lidé</Button>
+            <Button Grid.Column="1">Místa</Button>
+            <Button Grid.Column="2">Bankomaty</Button>
+            <Button Grid.Column="3">Statistiky</Button>
+            <Button Grid.Column="4">Synchronizace</Button>
+        </Grid>
     </Grid>
 </Window>
