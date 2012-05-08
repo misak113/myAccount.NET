@@ -1,1 +1,13 @@
 C:\Users\misak113\Documents\Visual Studio 11\Projects\myAccount.NET\myAccount.NET\bin\Debug\myAccount.NET.exe.config
+C:\Users\misak113\Documents\Visual Studio 11\Projects\myAccount.NET\myAccount.NET\bin\Debug\myAccount.NET.exe
+C:\Users\misak113\Documents\Visual Studio 11\Projects\myAccount.NET\myAccount.NET\bin\Debug\myAccount.NET.pdb
+C:\Users\misak113\Documents\Visual Studio 11\Projects\myAccount.NET\myAccount.NET\obj\Debug\myAccount.NET.csprojResolveAssemblyReference.cache
+C:\Users\misak113\Documents\Visual Studio 11\Projects\myAccount.NET\myAccount.NET\obj\Debug\MainWindow.baml
+C:\Users\misak113\Documents\Visual Studio 11\Projects\myAccount.NET\myAccount.NET\obj\Debug\MainWindow.g.cs
+C:\Users\misak113\Documents\Visual Studio 11\Projects\myAccount.NET\myAccount.NET\obj\Debug\App.g.cs
+C:\Users\misak113\Documents\Visual Studio 11\Projects\myAccount.NET\myAccount.NET\obj\Debug\myAccount.NET_MarkupCompile.cache
+C:\Users\misak113\Documents\Visual Studio 11\Projects\myAccount.NET\myAccount.NET\obj\Debug\myAccount.NET.g.resources
+C:\Users\misak113\Documents\Visual Studio 11\Projects\myAccount.NET\myAccount.NET\obj\Debug\myAccount.NET.Properties.Resources.resources
+C:\Users\misak113\Documents\Visual Studio 11\Projects\myAccount.NET\myAccount.NET\obj\Debug\myAccount.NET.csproj.GenerateResource.Cache
+C:\Users\misak113\Documents\Visual Studio 11\Projects\myAccount.NET\myAccount.NET\obj\Debug\myAccount.NET.exe
+C:\Users\misak113\Documents\Visual Studio 11\Projects\myAccount.NET\myAccount.NET\obj\Debug\myAccount.NET.pdb
