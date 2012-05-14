@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace myAccount.NET
+namespace myAccount.NET.Logic
 {
     class Synchronizer
     {
