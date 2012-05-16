@@ -37,6 +37,9 @@ namespace myAccount.NET.UI
             Uri iconUri = new Uri(context.basePath+"/"+ICON_SOURCE);
             BitmapFrame img = BitmapFrame.Create(iconUri);
             MainWindowInstance.Icon = img;
+
+            ContentPanel contentPanel = new ContentPanel(context);
+            Content.Children.Add(contentPanel);
         }
     }
 }

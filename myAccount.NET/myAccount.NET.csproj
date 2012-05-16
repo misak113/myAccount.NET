@@ -61,6 +61,8 @@
     <Compile Include="Data\Person.cs" />
     <Compile Include="Data\Place.cs" />
     <Compile Include="Data\Withdraw.cs" />
+    <Compile Include="Logic\IObserver.cs" />
+    <Compile Include="Logic\ISubject.cs" />
     <Compile Include="Logic\Synchronizer.cs" />
     <Page Include="UI\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -72,6 +74,7 @@
     </Compile>
     <Compile Include="Logic\Context.cs" />
     <Compile Include="Logic\DataLoader.cs" />
+    <Compile Include="UI\ContentPanel.cs" />
     <Compile Include="UI\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
