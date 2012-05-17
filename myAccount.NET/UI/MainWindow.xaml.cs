@@ -31,6 +31,7 @@ namespace myAccount.NET.UI
             MyAccount myAccount = new MyAccount();
             context = myAccount.context;
             Init();
+            myAccount.Start();
         }
 
         private void Init() {
@@ -39,6 +40,7 @@ namespace myAccount.NET.UI
             MainWindowInstance.Icon = img;
 
             ContentPanel contentPanel = new ContentPanel(context);
+            Grid.SetRow(contentPanel, 1);
             Content.Children.Add(contentPanel);
         }
     }

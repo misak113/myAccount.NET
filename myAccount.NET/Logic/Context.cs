@@ -6,17 +6,47 @@ using System.Threading.Tasks;
 
 namespace myAccount.NET.Logic
 {
-    public class Context
+    public class Context : ISubject
     {
         public const int MAIN = 1;
 
-        string _basePath;
+        private List<IObserver> observers = new List<IObserver>();
+
+        private string _basePath;
         public string basePath { 
             get { return _basePath; }
-            set { _basePath = value; } 
+            internal set { _basePath = value; } 
         }
         public ISubject subject { get; set; }
-        public int actualAction { get; set; }
-        
+        private int _actualAction;
+        public int actualAction {
+            get { return _actualAction; } 
+            internal set {
+                _actualAction = value;
+                notifyObservers();
+            }
+        }
+
+
+        public Context() {
+            subject = this;
+        }
+
+
+        public void registerObserver(IObserver observer)
+        {
+            observers.Add(observer);
+        }
+        public void unregisterObserver(IObserver observer)
+        {
+            observers.Remove(observer);
+        }
+        public void notifyObservers()
+        {
+            foreach (var observer in observers)
+            {
+                observer.notify(this);
+            }
+        }
     }
 }
