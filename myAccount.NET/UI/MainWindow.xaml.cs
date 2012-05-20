@@ -24,6 +24,8 @@ namespace myAccount.NET.UI
         public const string ICON_SOURCE = @"images/icon29.png";
 
         public Context context { get; private set; }
+
+        private ContentPanel contentPanel;
         
         public MainWindow()
         {
@@ -39,9 +41,30 @@ namespace myAccount.NET.UI
             BitmapFrame img = BitmapFrame.Create(iconUri);
             MainWindowInstance.Icon = img;
 
-            ContentPanel contentPanel = new ContentPanel(context);
+            contentPanel = new ContentPanel(context);
             Grid.SetRow(contentPanel, 1);
-            Content.Children.Add(contentPanel);
+            ContentWindow.Children.Add(contentPanel);
+
+            BindButtons();
+        }
+
+        private void BindButtons() {
+            payment.AddHandler(Button.ClickEvent, new RoutedEventHandler(ShowPage), true);
+            withdraw.AddHandler(Button.ClickEvent, new RoutedEventHandler(ShowPage), true);
+            debt.AddHandler(Button.ClickEvent, new RoutedEventHandler(ShowPage), true);
+            loan.AddHandler(Button.ClickEvent, new RoutedEventHandler(ShowPage), true);
+            income.AddHandler(Button.ClickEvent, new RoutedEventHandler(ShowPage), true);
+
+            people.AddHandler(Button.ClickEvent, new RoutedEventHandler(ShowPage), true);
+            places.AddHandler(Button.ClickEvent, new RoutedEventHandler(ShowPage), true);
+            machines.AddHandler(Button.ClickEvent, new RoutedEventHandler(ShowPage), true);
+            statistics.AddHandler(Button.ClickEvent, new RoutedEventHandler(ShowPage), true);
+            synchronization.AddHandler(Button.ClickEvent, new RoutedEventHandler(ShowPage), true);
+        }
+
+        void ShowPage(object sender, RoutedEventArgs e) {
+            Button button = (Button) sender;
+            context.actualAction = button.Name;
         }
     }
 }

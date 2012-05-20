@@ -8,7 +8,8 @@ namespace myAccount.NET.Logic
 {
     public class Context : ISubject
     {
-        public const int MAIN = 1;
+        public const string MAIN = "main";
+        public const string PAYMENT = "payment";
 
         private List<IObserver> observers = new List<IObserver>();
 
@@ -18,8 +19,8 @@ namespace myAccount.NET.Logic
             internal set { _basePath = value; } 
         }
         public ISubject subject { get; set; }
-        private int _actualAction;
-        public int actualAction {
+        private string _actualAction;
+        public string actualAction {
             get { return _actualAction; } 
             internal set {
                 _actualAction = value;

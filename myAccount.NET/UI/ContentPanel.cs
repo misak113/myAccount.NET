@@ -14,6 +14,7 @@ namespace myAccount.NET.UI
     class ContentPanel: Grid, IObserver
     {
         const string BACKGROUND_SOURCE = @"images/myAccount-big.png";
+        const string NOT_IMPLEMENTED_SOURCE = @"images/not-implemented.png";
 
         private Context context;
         public ContentPanel(Context context)
@@ -31,10 +32,14 @@ namespace myAccount.NET.UI
             ShowPage(context.actualAction);
         }
 
-        public void ShowPage(int page) { 
+        public void ShowPage(string page) {
+            this.Children.RemoveRange(0, 10);
             switch (page) {
                 case Context.MAIN:
                     ShowMain();
+                    break;
+                case Context.PAYMENT:
+                    ShowPayment();
                     break;
                 default:
                     ShowNotImplemented();
@@ -43,19 +48,30 @@ namespace myAccount.NET.UI
         }
 
         private void ShowMain() {
-            Image image = GetBackgroundImage();
+            Image image = GetBackgroundImage(BACKGROUND_SOURCE);
             //Grid.SetRow(image, 2);
             Children.Add(image);
         }
 
-        private void ShowNotImplemented() { 
-            
+        private void ShowPayment() {
+            AddForm addPayment = new AddForm();
+            Children.Add(addPayment);
+
+            Map paymentMap = new Map();
+            Grid.SetRow(paymentMap, 2);
+            Children.Add(paymentMap);
+        }
+
+        private void ShowNotImplemented() {
+            Image image = GetBackgroundImage(NOT_IMPLEMENTED_SOURCE);
+            //Grid.SetRow(image, 2);
+            Children.Add(image);
         }
 
 
-        private Image GetBackgroundImage() {
+        private Image GetBackgroundImage(String source) {
             // Open a Stream and decode a PNG image
-            string url = context.basePath + "/" + BACKGROUND_SOURCE;
+            string url = context.basePath + "/" + source;
             Stream imageStreamSource = new FileStream(url, FileMode.Open, FileAccess.Read, FileShare.Read);
             PngBitmapDecoder decoder = new PngBitmapDecoder(imageStreamSource, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.Default);
             BitmapSource bitmapSource = decoder.Frames[0];

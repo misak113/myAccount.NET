@@ -64,6 +64,7 @@
     <Compile Include="Logic\IObserver.cs" />
     <Compile Include="Logic\ISubject.cs" />
     <Compile Include="Logic\Synchronizer.cs" />
+    <Compile Include="UI\Map.cs" />
     <Page Include="UI\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -74,6 +75,7 @@
     </Compile>
     <Compile Include="Logic\Context.cs" />
     <Compile Include="Logic\DataLoader.cs" />
+    <Compile Include="UI\AddForm.cs" />
     <Compile Include="UI\ContentPanel.cs" />
     <Compile Include="UI\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -115,6 +117,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\myAccount-big.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\not-implemented.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
