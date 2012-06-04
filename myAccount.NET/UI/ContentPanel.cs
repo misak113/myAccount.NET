@@ -47,22 +47,26 @@ namespace myAccount.NET.UI
             }
         }
 
-        private void ShowMain() {
+        private void ShowMain()
+        {
+            LetsChangeDefinitions(1, 1);
             Image image = GetBackgroundImage(BACKGROUND_SOURCE);
-            //Grid.SetRow(image, 2);
             Children.Add(image);
         }
 
         private void ShowPayment() {
+            LetsChangeDefinitions(1, 2);
+
             AddForm addPayment = new AddForm();
             Children.Add(addPayment);
 
             Map paymentMap = new Map();
-            Grid.SetRow(paymentMap, 2);
+            Grid.SetColumn(paymentMap, 1);
             Children.Add(paymentMap);
         }
 
         private void ShowNotImplemented() {
+            LetsChangeDefinitions(1, 1);
             Image image = GetBackgroundImage(NOT_IMPLEMENTED_SOURCE);
             //Grid.SetRow(image, 2);
             Children.Add(image);
@@ -85,6 +89,34 @@ namespace myAccount.NET.UI
             image.Width = 200;
             image.Height = 200;
             return image;
+        }
+
+        private void LetsChangeDefinitions(int rows, int columns) {
+            try
+            {
+                while (true)
+                {
+                    ColumnDefinition cd = ColumnDefinitions.ElementAt(0);
+                    ColumnDefinitions.Remove(cd);
+                }
+            } catch (ArgumentOutOfRangeException e) {}
+            for (int i = 0; i<columns;i++ )
+            {
+                ColumnDefinitions.Add(new ColumnDefinition());
+            }
+            try
+            {
+                while (true)
+                {
+                    RowDefinition cd = RowDefinitions.ElementAt(0);
+                    RowDefinitions.Remove(cd);
+                }
+            }
+            catch (ArgumentOutOfRangeException e) { }
+            for (int i = 0; i < rows; i++)
+            {
+                RowDefinitions.Add(new RowDefinition());
+            }
         }
     }
 
