@@ -61,6 +61,7 @@
     <Compile Include="Data\Person.cs" />
     <Compile Include="Data\Place.cs" />
     <Compile Include="Data\Withdraw.cs" />
+    <Compile Include="Helper\NumericTextBox.cs" />
     <Compile Include="Logic\IObserver.cs" />
     <Compile Include="Logic\ISubject.cs" />
     <Compile Include="Logic\Synchronizer.cs" />

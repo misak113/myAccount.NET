@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace myAccount.NET.Data
 {
-    class Place
+    public class Place
     {
     }
 }

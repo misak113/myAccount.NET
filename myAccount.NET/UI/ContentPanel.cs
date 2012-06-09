@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using myAccount.NET.Data;
 using myAccount.NET.Logic;
 
 namespace myAccount.NET.UI
@@ -57,7 +58,8 @@ namespace myAccount.NET.UI
         private void ShowPayment() {
             LetsChangeDefinitions(1, 2);
 
-            AddForm addPayment = new AddForm();
+            AddForm addPayment = new AddForm(context);
+            addPayment.DataObject = new Payment();
             Children.Add(addPayment);
 
             Map paymentMap = new Map();

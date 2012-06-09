@@ -28,6 +28,18 @@ namespace myAccount.NET.Logic
             }
         }
 
+        private MyAccount _myAccount;
+        public MyAccount myAccount
+        {
+            get { return _myAccount; }
+            internal set
+            {
+                _myAccount = value;
+            }
+        }
+
+        public DataLoader dataLoader { get; internal set; }
+
 
         public Context() {
             subject = this;

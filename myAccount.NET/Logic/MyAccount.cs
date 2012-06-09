@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace myAccount.NET.Logic
 {
-    class MyAccount
+    public class MyAccount
     {
         public Context context { get; private set; }
         
@@ -19,6 +19,9 @@ namespace myAccount.NET.Logic
             context = new Context();
             string assemblyPath = Assembly.GetExecutingAssembly().Location;
             context.basePath = System.IO.Path.GetDirectoryName(assemblyPath);
+            context.myAccount = this;
+            context.dataLoader = new DataLoader();
+            context.dataLoader.Load();
         }
 
         public void Start() {

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace myAccount.NET.Data
 {
-    class ActionItem
+    public class ActionItem
     {
+        public string Value {get; set;}
     }
 }
