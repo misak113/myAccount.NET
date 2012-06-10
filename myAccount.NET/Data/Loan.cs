@@ -8,5 +8,14 @@ namespace myAccount.NET.Data
 {
     public class Loan : ActionItem
     {
+        public Loan() : base() {
+            Type = "loan";
+            Name = "Půjčení";
+        }
+
+        override public double RealValue()
+        {
+            return 1 * ConvertToDefaultCurrency(Value, Currency);
+        }
     }
 }

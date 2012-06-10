@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <ActionItems>
+    <ActionItem>
+      <Value>54254</Value>
+      <DateTime>-8588622463461903515</DateTime>
+      <Note>Zde zadejte poznámku
+</Note>
+      <Place>Zadejte název umístění</Place>
+      <Person>Zadejte osobu</Person>
+      <Type>debt</Type>
+      <Currency>czk</Currency>
+    </ActionItem>
+    <ActionItem>
+      <Value>66666</Value>
+      <DateTime>-8588622463363107864</DateTime>
+      <Note>Zde zadejte poznámku
+</Note>
+      <Place>Zadejte název umístění</Place>
+      <Person>Zadejte osobu</Person>
+      <Type>income</Type>
+      <Currency>czk</Currency>
+    </ActionItem>
+    <ActionItem>
+      <Value>55555</Value>
+      <DateTime>-8588622463403400169</DateTime>
+      <Note>Zde zadejte poznámku
+</Note>
+      <Place>Zadejte název umístění</Place>
+      <Person>Zadejte osobu</Person>
+      <Type>loan</Type>
+      <Currency>czk</Currency>
+    </ActionItem>
+    <ActionItem>
+      <Value>4554</Value>
+      <DateTime>-8588622463552628704</DateTime>
+      <Note>Zde zadejte poznámku
+</Note>
+      <Place>Zadejte název umístění</Place>
+      <Person>Zadejte osobu</Person>
+      <Type>payment</Type>
+      <Currency>czk</Currency>
+    </ActionItem>
+    <ActionItem>
+      <Value>45245</Value>
+      <DateTime>-8588622453407607947</DateTime>
+      <Note>Zde zadejte poznámku
+</Note>
+      <Place>Zadejte název umístění</Place>
+      <Person>Zadejte osobu</Person>
+      <Type>payment</Type>
+      <Currency>czk</Currency>
+    </ActionItem>
+    <ActionItem>
+      <Value>545</Value>
+      <DateTime>-8588622451525812384</DateTime>
+      <Note>Zde zadejte poznámku
+</Note>
+      <Place>Zadejte název umístění</Place>
+      <Person>Zadejte osobu</Person>
+      <Type>payment</Type>
+      <Currency>czk</Currency>
+    </ActionItem>
+    <ActionItem>
+      <Value>455</Value>
+      <DateTime>-8588622463508056155</DateTime>
+      <Note>Zde zadejte poznámku
+</Note>
+      <Place>Zadejte název umístění</Place>
+      <Person>Zadejte osobu</Person>
+      <Type>withdraw</Type>
+      <Currency>czk</Currency>
+    </ActionItem>
+    <ActionItem>
+      <Value>54555</Value>
+      <DateTime>-8588622419185065508</DateTime>
+      <Note>Zde zadejte poznámku
+</Note>
+      <Place>Zadejte název umístění</Place>
+      <Person>Michael</Person>
+      <Type>withdraw</Type>
+      <Currency>czk</Currency>
+    </ActionItem>
+    <ActionItem>
+      <Value>2545</Value>
+      <DateTime>-8588622401059310466</DateTime>
+      <Note>Zde zadejte poznámku
+</Note>
+      <Place>Zadejte název umístěníghdf</Place>
+      <Person>Zadejte osobu</Person>
+      <Type>withdraw</Type>
+      <Currency>czk</Currency>
+    </ActionItem>
+  </ActionItems>
+  <Persons>
+    <Person>
+      <Name>Zadejte osobu</Name>
+      <Phone></Phone>
+    </Person>
+    <Person>
+      <Name>Michael</Name>
+      <Phone></Phone>
+    </Person>
+  </Persons>
+  <Places>
+    <Place>
+      <Name>Zadejte název umístění</Name>
+      <Longitude>0</Longitude>
+      <Latitude>0</Latitude>
+    </Place>
+    <Place>
+      <Name>Zadejte název umístěníghdf</Name>
+      <Longitude>0</Longitude>
+      <Latitude>0</Latitude>
+    </Place>
+  </Places>
+</root>

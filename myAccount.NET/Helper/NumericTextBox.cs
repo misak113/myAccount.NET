@@ -18,6 +18,7 @@ namespace myAccount.NET.Helper
         // the decimal point, and editing keystrokes (backspace).
         protected override void OnTextChanged(TextChangedEventArgs e)
         {
+            // @todo
             base.OnTextChanged(e);
 
             NumberFormatInfo numberFormatInfo = System.Globalization.CultureInfo.CurrentCulture.NumberFormat;

@@ -65,7 +65,11 @@
     <Compile Include="Logic\IObserver.cs" />
     <Compile Include="Logic\ISubject.cs" />
     <Compile Include="Logic\Synchronizer.cs" />
+    <Compile Include="UI\InfoBox.cs" />
     <Compile Include="UI\Map.cs" />
+    <Compile Include="UI\PeopleView.cs" />
+    <Compile Include="UI\PlacesView.cs" />
+    <Compile Include="UI\StatisticsView.cs" />
     <Page Include="UI\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -125,6 +129,14 @@
     <Resource Include="images\not-implemented.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\data.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Libs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -42,6 +43,27 @@ namespace myAccount.NET.UI
                 case Context.PAYMENT:
                     ShowPayment();
                     break;
+                case Context.DEBT:
+                    ShowDebt();
+                    break;
+                case Context.INCOME:
+                    ShowIncome();
+                    break;
+                case Context.LOAN:
+                    ShowLoan();
+                    break;
+                case Context.WITHDRAW:
+                    ShowWithdraw();
+                    break;
+                case Context.PEOPLE:
+                    ShowPeople();
+                    break;
+                case Context.PLACES:
+                    ShowPlaces();
+                    break;
+                case Context.STATISTICS:
+                    ShowStatistics();
+                    break;
                 default:
                     ShowNotImplemented();
                     break;
@@ -57,14 +79,111 @@ namespace myAccount.NET.UI
 
         private void ShowPayment() {
             LetsChangeDefinitions(1, 2);
-
-            AddForm addPayment = new AddForm(context);
+            ColumnDefinition column = ColumnDefinitions.First();
+            column.Width = new GridLength(180);
+            
+            AddForm addPayment = new AddForm(context, "Nová platba");
             addPayment.DataObject = new Payment();
             Children.Add(addPayment);
 
             Map paymentMap = new Map();
             Grid.SetColumn(paymentMap, 1);
             Children.Add(paymentMap);
+        }
+        private void ShowDebt()
+        {
+            LetsChangeDefinitions(1, 2);
+            ColumnDefinition column = ColumnDefinitions.First();
+            column.Width = new GridLength(180);
+            
+            AddForm addDebt = new AddForm(context, "Nový dluh");
+            addDebt.DataObject = new Debt();
+            Children.Add(addDebt);
+
+            Map debtMap = new Map();
+            Grid.SetColumn(debtMap, 1);
+            Children.Add(debtMap);
+        }
+        private void ShowIncome()
+        {
+            LetsChangeDefinitions(1, 2);
+            ColumnDefinition column = ColumnDefinitions.First();
+            column.Width = new GridLength(180);
+            
+            AddForm addIncome = new AddForm(context, "Nový příjem");
+            addIncome.DataObject = new Income();
+            Children.Add(addIncome);
+
+            Map incomeMap = new Map();
+            Grid.SetColumn(incomeMap, 1);
+            Children.Add(incomeMap);
+        }
+        private void ShowLoan()
+        {
+            LetsChangeDefinitions(1, 2);
+            ColumnDefinition column = ColumnDefinitions.First();
+            column.Width = new GridLength(180);
+            
+            AddForm addLoan = new AddForm(context, "Nové půjčení");
+            addLoan.DataObject = new Loan();
+            Children.Add(addLoan);
+
+            Map loanMap = new Map();
+            Grid.SetColumn(loanMap, 1);
+            Children.Add(loanMap);
+        }
+        private void ShowWithdraw()
+        {
+            LetsChangeDefinitions(1, 2);
+            ColumnDefinition column = ColumnDefinitions.First();
+            column.Width = new GridLength(180);
+            
+            AddForm addWithdraw = new AddForm(context, "Nový výběr");
+            addWithdraw.DataObject = new Withdraw();
+            Children.Add(addWithdraw);
+
+            Map withdrawMap = new Map();
+            Grid.SetColumn(withdrawMap, 1);
+            Children.Add(withdrawMap);
+        }
+
+        private void ShowPeople() {
+            LetsChangeDefinitions(1, 2);
+            ColumnDefinition column = ColumnDefinitions.First();
+            column.Width = new GridLength(180);
+
+            InfoBox infoBox = new InfoBox();
+            Grid.SetColumn(infoBox, 1);
+            Children.Add(infoBox);
+
+            PeopleView peopleView = new PeopleView(context, infoBox);
+            Children.Add(peopleView);
+        }
+        private void ShowPlaces()
+        {
+            LetsChangeDefinitions(1, 2);
+            ColumnDefinition column = ColumnDefinitions.First();
+            column.Width = new GridLength(180);
+
+            InfoBox infoBox = new InfoBox();
+            Grid.SetColumn(infoBox, 1);
+            Children.Add(infoBox);
+
+            PlacesView placesView = new PlacesView(context, infoBox);
+            Children.Add(placesView);
+        }
+        private void ShowStatistics()
+        {
+            LetsChangeDefinitions(1, 2);
+            ColumnDefinition column = ColumnDefinitions.First();
+            column.Width = new GridLength(180);
+
+            InfoBox infoBox = new InfoBox();
+            Grid.SetColumn(infoBox, 1);
+            Children.Add(infoBox);
+
+            StatisticsView statisticsView = new StatisticsView(context, infoBox);
+            Children.Add(statisticsView);
         }
 
         private void ShowNotImplemented() {

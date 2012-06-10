@@ -20,7 +20,7 @@ namespace myAccount.NET.Logic
             string assemblyPath = Assembly.GetExecutingAssembly().Location;
             context.basePath = System.IO.Path.GetDirectoryName(assemblyPath);
             context.myAccount = this;
-            context.dataLoader = new DataLoader();
+            context.dataLoader = new DataLoader(context);
             context.dataLoader.Load();
         }
 

@@ -1,7 +1,7 @@
 ﻿<Window x:Class="myAccount.NET.UI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="myAccount - osobní hotovostní účetnictví" Height="400" Width="600" Name="MainWindowInstance">
+        Title="myAccount - osobní hotovostní účetnictví" Height="450" Width="600" Name="MainWindowInstance">
     <Grid Name="ContentWindow">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -38,7 +38,7 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Width="90" Margin="5" Name="people">Lidé</Button>
             <Button Grid.Column="1" Width="90" Margin="5" Name="places">Místa</Button>
-            <Button Grid.Column="2" Width="90" Margin="5" Name="machines">Bankomaty</Button>
+            <!--<Button Grid.Column="2" Width="90" Margin="5" Name="machines">Bankomaty</Button>-->
             <Button Grid.Column="3" Width="90" Margin="5" Name="statistics">Statistiky</Button>
             <Button Grid.Column="4" Width="90" Margin="5" Name="synchronization">Synchronizace</Button>
         </Grid>

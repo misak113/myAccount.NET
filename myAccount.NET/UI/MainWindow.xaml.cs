@@ -57,7 +57,7 @@ namespace myAccount.NET.UI
 
             people.AddHandler(Button.ClickEvent, new RoutedEventHandler(ShowPage), true);
             places.AddHandler(Button.ClickEvent, new RoutedEventHandler(ShowPage), true);
-            machines.AddHandler(Button.ClickEvent, new RoutedEventHandler(ShowPage), true);
+            //machines.AddHandler(Button.ClickEvent, new RoutedEventHandler(ShowPage), true);
             statistics.AddHandler(Button.ClickEvent, new RoutedEventHandler(ShowPage), true);
             synchronization.AddHandler(Button.ClickEvent, new RoutedEventHandler(ShowPage), true);
         }
