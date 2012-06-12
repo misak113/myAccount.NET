@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using myAccount.NET.UI;
 
 namespace myAccount.NET.Logic
 {
@@ -57,6 +58,10 @@ namespace myAccount.NET.Logic
         }
 
         public DataLoader dataLoader { get; internal set; }
+
+        public object editedItem { get; set; }
+
+        public Map actualMap { get; set; }
 
 
         public Context() {

@@ -94,12 +94,12 @@ namespace myAccount.NET.UI
 
         private void edit_Click(object sender, RoutedEventArgs e)
         {
+            context.editedItem = place;
             context.actualAction = Context.EDIT_PLACE;
         }
 
         private int CompareByDate(ActionItem x, ActionItem y)
         {
-            // @todo
             if (x == null)
             {
                 return 1;
@@ -108,11 +108,11 @@ namespace myAccount.NET.UI
             {
                 return -1;
             }
-            if (x.DateTime.Ticks == x.DateTime.Ticks)
+            if (x.DateTime.Ticks == y.DateTime.Ticks)
             {
                 return 0;
             }
-            return x.DateTime.Ticks > x.DateTime.Ticks ? 1 : -1;
+            return x.DateTime.Ticks < y.DateTime.Ticks ? 1 : -1;
         }
 
     }

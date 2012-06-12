@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,8 +25,9 @@ namespace myAccount.NET.Data
         {
             XElement elAI = new XElement("Place");
             elAI.Add(new XElement("Name", Name));
-            elAI.Add(new XElement("Longitude", Longitude));
-            elAI.Add(new XElement("Latitude", Latitude));
+            //CultureInfo culture = new CultureInfo("cz-CS");
+            elAI.Add(new XElement("Longitude", Longitude.ToString()));
+            elAI.Add(new XElement("Latitude", Latitude.ToString()));
             return elAI;
         }
         

@@ -35,7 +35,7 @@ namespace myAccount.NET.Data
 
         public XElement GetXElement() {
             XElement elAI = new XElement("ActionItem");
-            elAI.Add(new XElement("Value", Value));
+            elAI.Add(new XElement("Value", Value.ToString()));
             elAI.Add(new XElement("DateTime", DateTime.ToBinary()));
             elAI.Add(new XElement("Note", Note));
             elAI.Add(new XElement("Place", Place.Name));

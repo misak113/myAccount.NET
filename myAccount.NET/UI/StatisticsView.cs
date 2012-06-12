@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using myAccount.NET.Data;
 using myAccount.NET.Logic;
 
@@ -27,7 +28,9 @@ namespace myAccount.NET.UI
         private void Init()
         {
             listBox = new ListBox();
-            listBox.ItemsSource = context.dataLoader.GetActionItems();
+            var items = context.dataLoader.GetActionItems();
+            items.Sort(CompareByDate);
+            listBox.ItemsSource = items;
             listBox.SelectionMode = SelectionMode.Single;
             listBox.SelectionChanged += listBox_SelectionChanged;
 
@@ -71,6 +74,73 @@ namespace myAccount.NET.UI
             Grid.SetRow(delete, 1);
             Grid.SetColumn(delete, 1);
             infoBox.Children.Add(delete);
+
+
+
+            Grid description = new Grid();
+            description.RowDefinitions.Add(new RowDefinition());
+            description.RowDefinitions.Add(new RowDefinition());
+            description.RowDefinitions.Add(new RowDefinition());
+            description.RowDefinitions.Add(new RowDefinition());
+            description.RowDefinitions.Add(new RowDefinition());
+            description.ColumnDefinitions.Add(new ColumnDefinition());
+            description.ColumnDefinitions.Add(new ColumnDefinition());
+
+            Label valueLabel = new Label();
+            valueLabel.Content = "Hodnota:";
+            Grid.SetRow(valueLabel, 0);
+            description.Children.Add(valueLabel);
+            Label value = new Label();
+            value.Content = actionItem.Value + " " + actionItem.Currency;
+            Grid.SetColumn(value, 1);
+            Grid.SetRow(value, 0);
+            description.Children.Add(value);
+
+            Label datetimeLabel = new Label();
+            datetimeLabel.Content = "Vloženo:";
+            Grid.SetRow(datetimeLabel, 1);
+            description.Children.Add(datetimeLabel);
+            Label datetime = new Label();
+            datetime.Content = actionItem.DateTime.ToShortDateString() + ", " + actionItem.DateTime.ToShortTimeString();
+            Grid.SetColumn(datetime, 1);
+            Grid.SetRow(datetime, 1);
+            description.Children.Add(datetime);
+
+            Label noteLabel = new Label();
+            noteLabel.Content = "Poznámka:";
+            Grid.SetRow(noteLabel, 2);
+            description.Children.Add(noteLabel);
+            RichTextBox note = new RichTextBox();
+            note.Document.Blocks.Add(new Paragraph(new Run(actionItem.Note)));
+            note.IsReadOnly = true;
+            Grid.SetColumn(note, 1);
+            Grid.SetRow(note, 2);
+            description.Children.Add(note);
+
+            Label placeLabel = new Label();
+            placeLabel.Content = "Místo:";
+            Grid.SetRow(placeLabel, 3);
+            description.Children.Add(placeLabel);
+            Label place = new Label();
+            place.Content = actionItem.Place.Name;
+            Grid.SetColumn(place, 1);
+            Grid.SetRow(place, 3);
+            description.Children.Add(place);
+
+            Label personLabel = new Label();
+            personLabel.Content = "Osoba:";
+            Grid.SetRow(personLabel, 4);
+            description.Children.Add(personLabel);
+            Label person = new Label();
+            person.Content = actionItem.Person.Name;
+            Grid.SetColumn(person, 1);
+            Grid.SetRow(person, 4);
+            description.Children.Add(person);
+
+
+            Grid.SetRow(description, 2);
+            Grid.SetColumnSpan(description, 2);
+            infoBox.Children.Add(description);
         }
 
         private void delete_Click(object sender, RoutedEventArgs e)
@@ -82,12 +152,12 @@ namespace myAccount.NET.UI
 
         private void edit_Click(object sender, RoutedEventArgs e)
         {
+            context.editedItem = actionItem;
             context.actualAction = Context.EDIT_ACTION_ITEM;
         }
 
         private int CompareByDate(ActionItem x, ActionItem y)
         {
-            // @todo
             if (x == null)
             {
                 return 1;
@@ -96,11 +166,11 @@ namespace myAccount.NET.UI
             {
                 return -1;
             }
-            if (x.DateTime.Ticks == x.DateTime.Ticks)
+            if (x.DateTime.Ticks == y.DateTime.Ticks)
             {
                 return 0;
             }
-            return x.DateTime.Ticks > x.DateTime.Ticks ? 1 : -1;
+            return x.DateTime.Ticks < y.DateTime.Ticks ? 1 : -1;
         }
 
     }

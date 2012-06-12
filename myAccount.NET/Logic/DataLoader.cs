@@ -108,6 +108,12 @@ namespace myAccount.NET.Logic
                 Withdraws.Remove((Withdraw)actionItem);
             }
         }
+        public void EditActionItem(ActionItem actionItem)
+        {
+            RemoveActionItem(actionItem);
+            AddActionItem(actionItem);
+            //Save();
+        }
 
         public void AddPerson(Person person) {
             Persons.Add(person);
@@ -116,6 +122,11 @@ namespace myAccount.NET.Logic
         public void RemovePerson(Person person) {
             Persons.Remove(person);
         }
+        public void EditPerson(Person person)
+        {
+            RemovePerson(person);
+            AddPerson(person);
+        }
 
         public void AddPlace(Place place) {
             Places.Add(place);
@@ -123,6 +134,10 @@ namespace myAccount.NET.Logic
         public void RemovePlace(Place place)
         {
             Places.Remove(place);
+        }
+        public void EditPlace(Place place) {
+            RemovePlace(place);
+            AddPlace(place);
         }
 
         public Person GetPerson(string name) {
@@ -140,6 +155,20 @@ namespace myAccount.NET.Logic
                 //Save();
             }
             return person;
+        }
+
+        public Place GetExistsPlace(string name)
+        {
+            Place place = null;
+            foreach (Place plac in Places)
+            {
+                if (plac.Name == name)
+                {
+                    place = plac;
+                    break;
+                }
+            }
+            return place;
         }
 
         public Place GetPlace(string name) {
@@ -175,7 +204,7 @@ namespace myAccount.NET.Logic
 
         public void Load() {
             XDocument doc = XDocument.Load(DATA_FILE);
-
+            // @todo pozor na double tecku v longitude apod.
             InitData();
 
             XElement elPersons = doc.Root.Element("Persons");
@@ -186,7 +215,7 @@ namespace myAccount.NET.Logic
             }
 
             XElement elPlaces = doc.Root.Element("Places");
-            foreach (XElement elPlace in elPlaces.Elements("Places"))
+            foreach (XElement elPlace in elPlaces.Elements("Place"))
             {
                 Place place = new Place();
                 place.SetXElement(elPlace);

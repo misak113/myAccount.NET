@@ -26,15 +26,23 @@ namespace myAccount.NET.UI
         private DatePicker date;
         private RichTextBox note;
 
+        public bool editing = false;
+        public string savedPage = Context.MAIN;
+
+        public Currency[] currencies = new Currency[2] {
+            new Currency("czk", "Kč"),
+            new Currency("eur", "€")
+        };
+
         private string label;
 
         public AddForm(Context context, string label) {
             this.context = context;
             this.label = label;
-            Init();
+            //Init();
         }
 
-        private void Init() {
+        public void Init() {
             InitDefinitions();
 
             Label labelEl = new Label();
@@ -65,15 +73,28 @@ namespace myAccount.NET.UI
 
         private void AddInputs() {
             value = new NumericTextBox();
-            value.Text = "Zadejte částku";
+            if (DataObject.Value != 0)
+            {
+                value.Text = Convert.ToString(DataObject.Value);
+            }
+            else
+            {
+                value.Text = "Zadejte částku";
+            }
             Children.Add(value);
             Grid.SetRow(value, 1);
             value.Height = 25;
 
             currency = new ComboBox();
-            currency.Items.Add(new Currency("czk", "Kč"));
-            currency.Items.Add(new Currency("eur", "€"));
-            currency.SelectedIndex = 0;
+            foreach (Currency cur in currencies) {
+                currency.Items.Add(cur);
+                if (DataObject != null && DataObject.Currency == cur.Code) {
+                    currency.SelectedItem = cur;
+                }
+            }
+            if (currency.SelectedItem == null) {
+                currency.SelectedIndex = 0;
+            }
             currency.Width = 50;
             currency.Height = 25;
             Grid.SetColumn(currency, 1);
@@ -81,7 +102,15 @@ namespace myAccount.NET.UI
             Children.Add(currency);
 
             place = new TextBox();
-            place.Text = "Zadejte název umístění";
+            place.TextChanged += place_TextChanged;
+            if (DataObject.Place != null)
+            {
+                place.Text = DataObject.Place.Name;
+            }
+            else
+            {
+                place.Text = "Zadejte název umístění";
+            }
             //place.AddHandler(Control.GotFocusEvent, new EventHandler(PlaceholderDispatcher));
             place.Height = 25;
             Grid.SetColumnSpan(place, 2);
@@ -89,13 +118,27 @@ namespace myAccount.NET.UI
             Children.Add(place);
 
             person = new TextBox();
-            person.Text = "Zadejte osobu";
+            if (DataObject.Person != null)
+            {
+                person.Text = DataObject.Person.Name;
+            }
+            else
+            {
+                person.Text = "Zadejte osobu";
+            }
             person.Height = 25;
             Grid.SetColumnSpan(person, 2);
             Grid.SetRow(person, 3);
             Children.Add(person);
 
             date = new DatePicker();
+            if (DataObject.DateTime != null)
+            {
+                date.SelectedDate = DataObject.DateTime;
+            }
+            else {
+                date.SelectedDate = DateTime.Now;
+            }
             date.Height = 25;
             Grid.SetColumnSpan(date, 2);
             Grid.SetRow(date, 4);
@@ -103,7 +146,14 @@ namespace myAccount.NET.UI
 
             note = new RichTextBox();
             note.Document.Blocks.Remove(note.Document.Blocks.First());
-            note.Document.Blocks.Add(new Paragraph(new Run("Zde zadejte poznámku")));
+            if (DataObject.Note != null)
+            {
+                note.Document.Blocks.Add(new Paragraph(new Run(DataObject.Note)));
+            }
+            else
+            {
+                note.Document.Blocks.Add(new Paragraph(new Run("Zde zadejte poznámku")));
+            }
             note.Height = 40;
             Grid.SetColumnSpan(note, 2);
             Grid.SetRow(note, 5);
@@ -116,6 +166,17 @@ namespace myAccount.NET.UI
             Grid.SetRow(save, 6);
             save.Click += this.Save;
             Children.Add(save);
+        }
+
+        private void place_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Place placeNow = context.dataLoader.GetExistsPlace(place.Text);
+            if (placeNow == null) {
+                return;
+            }
+            double lat = placeNow.Latitude;
+            double lng = placeNow.Longitude;
+            context.actualMap.SetLatLng(lat, lng);
         }
 
 
@@ -137,10 +198,15 @@ namespace myAccount.NET.UI
             Place place = context.dataLoader.GetPlace(this.place.Text);
             DataObject.Place = place;
             DataObject.Person = person;
-            context.dataLoader.AddActionItem(DataObject);
+            DataObject.DateTime = date.SelectedDate.Value.Date;
+            if (editing) {
+                context.dataLoader.EditActionItem(DataObject);
+            } else {
+                context.dataLoader.AddActionItem(DataObject);
+            }
             context.dataLoader.Save();
             InfoMessage("Uloženo");
-            context.actualAction = Context.MAIN;
+            context.actualAction = savedPage;
         }
 
         void PlaceholderDispatcher(object sender, EventArgs e) { 
@@ -148,11 +214,11 @@ namespace myAccount.NET.UI
         }
 
         public void ErrorMessage(string text) { 
-            
+            // @todo
         }
         public void InfoMessage(string text)
         {
-
+            // @todo
         }
 
     }
